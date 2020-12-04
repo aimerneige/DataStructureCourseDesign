@@ -5,6 +5,12 @@ int **createMaze(
     const char *file_name,
     int *size_x,
     int *size_y);
-void destoryMaze(int **maze, int size_x);
+void destoryMaze(
+    int **maze,
+    int size_x);
+void printMaze(
+    int **maze,
+    int size_x,
+    int size_y);
 
 #endif // __MAZE_H__

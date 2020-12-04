@@ -36,12 +36,14 @@ int **createMaze(
 
 #ifdef DEBUG
 
+printf("=== DEBUG OUTPUT START ===\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             printf("%d ", maze[i][j]);
         }
         printf("\n");
     }
+printf("===  DEBUG OUTPUT END  ===\n");
 
 #endif // DEBUG
 
@@ -56,4 +58,14 @@ void destoryMaze(int **maze, int size_x)
         free(maze[i]);
     }
     free(maze);
+}
+
+void printMaze(int **maze, int size_x, int size_y)
+{
+    for (int i = 0; i < size_x; i++) {
+        for (int j = 0; j < size_y; j++) {
+            printf("%d ", maze[i][j]);
+        }
+        printf("\n");
+    }
 }

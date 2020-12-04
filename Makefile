@@ -1,4 +1,4 @@
-OBJECTS = main.o maze.o
+OBJECTS = main.o maze.o queue.o
 TARGET = maze
 CC = gcc
 CC_FLAG = -Wall
