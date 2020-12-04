@@ -17,7 +17,7 @@ printf("===  TEST OUTPUT END  ===\n");
 #include "maze.h"
 printf("=== TEST OUTPUT START ===\n");
     int m, n;
-    int **maze = createMaze("maze.txt", &m, &n);
+    Maze maze = createMaze("maze.txt", &m, &n);
     printMaze(maze, m, n);
     destoryMaze(maze, n);
 printf("===  TEST OUTPUT END  ===\n");

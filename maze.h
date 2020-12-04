@@ -1,15 +1,17 @@
 #ifndef __MAZE_H__
 #define __MAZE_H__
 
-int **createMaze(
+typedef int **Maze;
+
+Maze createMaze(
     const char *file_name,
     int *size_x,
     int *size_y);
 void destoryMaze(
-    int **maze,
+    Maze maze,
     int size_x);
 void printMaze(
-    int **maze,
+    Maze maze,
     int size_x,
     int size_y);
 

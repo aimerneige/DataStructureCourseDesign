@@ -4,7 +4,7 @@
 
 #include "maze.h"
 
-int **createMaze(
+Maze createMaze(
     const char *file_name,
     int *size_x,
     int *size_y)
@@ -22,7 +22,7 @@ int **createMaze(
     *size_x = m;
     *size_y = n;
 
-    int **maze = NULL;
+    Maze maze = NULL;
     maze = (int **)malloc(sizeof(int *) * m);
     for (int i = 0; i < m; i++) {
         maze[i] = (int *)malloc(sizeof(int) * n);
@@ -52,7 +52,7 @@ printf("===  DEBUG OUTPUT END  ===\n");
     return maze;
 }
 
-void destoryMaze(int **maze, int size_x)
+void destoryMaze(Maze maze, int size_x)
 {
     for (int i = 0; i < size_x; i++) {
         free(maze[i]);
@@ -60,7 +60,7 @@ void destoryMaze(int **maze, int size_x)
     free(maze);
 }
 
-void printMaze(int **maze, int size_x, int size_y)
+void printMaze(Maze maze, int size_x, int size_y)
 {
     for (int i = 0; i < size_x; i++) {
         for (int j = 0; j < size_y; j++) {
