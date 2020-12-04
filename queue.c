@@ -13,8 +13,8 @@ pQueue createQueue(unsigned capacity)
     queue->front = 0;
     queue->size = 0;
     queue->rear = capacity - 1;
-    queue->array = (int *)malloc(
-        sizeof(int) * capacity);
+    queue->array = (pPoint)malloc(
+        sizeof(Point) * capacity);
     return queue;
 }
 
@@ -30,26 +30,26 @@ bool isFull(pQueue queue)
     return (queue->size == queue->capacity);
 }
 
-void enQueue(pQueue queue, int data)
+void enQueue(pQueue queue, pPoint data)
 {
     assert(queue != NULL);
     assert(!isFull(queue));
     queue->rear = (queue->rear + 1) % queue->capacity;
-    queue->array[queue->rear] = data;
+    queue->array[queue->rear] = *data;
     queue->size = queue->size + 1;
 }
 
-int deQueue(pQueue queue)
+Point deQueue(pQueue queue)
 {
     assert(queue != NULL);
     assert(!isEmpty(queue));
-    int data = queue->array[queue->front];
+    Point data = queue->array[queue->front];
     queue->front = (queue->front + 1) % queue->capacity;
     queue->size = queue->size - 1;
     return data;
 }
 
-int peek(pQueue queue)
+Point peek(pQueue queue)
 {
     assert(queue != NULL);
     return queue->array[queue->front];
