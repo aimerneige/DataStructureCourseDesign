@@ -8,9 +8,6 @@ RM_FLAGS = -f
 $(TARGET):$(OBJECTS)
 	$(CC) -o $(TARGET) $(OBJECTS) $(CC_FLAG)
 
-ze: $(OBJECTS)
-	$(CC) -o ze $(OBJECTS) $(CC_FLAGS)
-
 .PHONY: clean
 clean:
 	-$(RM) $(RM_FLAGS) $(OBJECTS) $(TARGET)
