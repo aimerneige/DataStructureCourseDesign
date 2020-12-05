@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "maze.h"
+#include "solve.h"
+
 // #define TEST // comment this when test done
 
 int main(int argc, char const *argv[])
@@ -40,7 +43,14 @@ printf("=== TEST OUTPUT START ===\n");
 printf("===  TEST OUTPUT END  ===\n");
 #endif // TEST
 
-
+    int m, n;
+    Maze maze = createMaze("maze.txt", &m, &n);
+    if (solve(maze, m, n)) {
+        printf("True\n");
+    }
+    else {
+        printf("False!\n");
+    }
 
 
     return 0;
