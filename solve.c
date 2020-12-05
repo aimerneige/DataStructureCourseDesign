@@ -6,6 +6,8 @@
 #include "maze.h"
 #include "queue.h"
 
+#define DEBUG
+
 static bool
 solveUtil(
     Maze maze, Maze visited,
@@ -43,15 +45,30 @@ solve(
     }
     for (int i = 0; i < size_x; i++) {
         for (int j = 0; j < size_y; j++) {
-            visited[i][j] = 0;
+            sol[i][j] = 0;
         }
     }
 
-    return solveUtil(
+    bool ret = solveUtil(
         maze, visited,
         size_x, size_y,
         0, 0,
         sol);
+
+#ifdef DEBUG
+
+printf("=== DEBUG OUTPUT START ===\n");
+    for (int i = 0; i < size_x; i++) {
+        for (int j = 0; j < size_y; j++) {
+            printf("%d ", sol[i][j]);
+        }
+        printf("\n");
+    }
+printf("===  DEBUG OUTPUT END  ===\n");
+
+#endif
+
+    return ret;
 }
 
 static bool

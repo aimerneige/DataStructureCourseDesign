@@ -4,6 +4,8 @@
 
 #include "maze.h"
 
+// #define DEBUG
+
 Maze createMaze(
     const char *file_name,
     int *size_x,
