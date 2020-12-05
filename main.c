@@ -46,7 +46,7 @@ printf("===  TEST OUTPUT END  ===\n");
     int m, n;
     Maze maze = createMaze("maze.txt", &m, &n);
     if (solve(maze, m, n)) {
-        printf("True\n");
+        printf("True!\n");
     }
     else {
         printf("False!\n");

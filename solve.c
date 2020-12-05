@@ -66,6 +66,21 @@ canGo(
 }
 
 static bool
+visitedChecked(
+    Maze visited,
+    int size_x, int size_y,
+    int x, int y
+)
+{
+    if (x < 0 || y < 0 || x >= size_x || y >= size_y) {
+        return true;
+    }
+    else {
+        return visited[x][y] == 1;
+    }
+}
+
+static bool
 solveUtil(
     Maze maze, Maze visited,
     int size_x, int size_y,
@@ -98,7 +113,9 @@ solveUtil(
 
         // check if there is a path (x + 1, y)
         if (
-            visited[x + 1][y] != 1 &&
+            !visitedChecked(visited,
+                size_x, size_y,
+                x + 1, y) &&
             solveUtil(
                 maze, visited,
                 size_x, size_y,
@@ -111,7 +128,9 @@ solveUtil(
 
         // check if there is a path (x, y + 1)
         if (
-            visited[x][y + 1] != 1 &&
+            !visitedChecked(visited,
+                size_x, size_y,
+                x, y + 1) &&
             solveUtil(
                 maze, visited,
                 size_x, size_y,
@@ -124,7 +143,9 @@ solveUtil(
 
         // check if there is a path (x - 1, y)
         if (
-            visited[x - 1][y] != 1 &&
+            !visitedChecked(visited,
+                size_x, size_y,
+                x - 1, y) &&
             solveUtil(
                 maze, visited,
                 size_x, size_y,
@@ -137,7 +158,9 @@ solveUtil(
 
         // check if there is a path (x, y - 1)
         if (
-            visited[x][y - 1] != 1 &&
+            !visitedChecked(visited,
+                size_x, size_y,
+                x, y - 1) &&
             solveUtil(
                 maze, visited,
                 size_x, size_y,
