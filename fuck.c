@@ -1,11 +1,13 @@
 #include <stdio.h>
 
 // 箭头
-char sign[] = {'-', 'u', 'd', 'l', 'r'};
+// char sign[] = {'-', 'u', 'd', 'l', 'r'};
+char sign[] = {'-', '^', 'v', '<', '>'};
 
 int m; // 行号
 int n; // 列号
-int maze[200][200]; // 存储迷宫数据
+int maze[128][128]; // 存储迷宫数据
+int path[128][128]; // 存储路径数据
 
 struct stack {
     int x; // 当前位置的行号
@@ -61,6 +63,22 @@ int DFS(int x_start, int y_start, int x_end, int y_end)
                 printf("(%d, %d, %c) ", st[k].x, st[k].y, sign[st[k].d]);
             }
             printf("\n");
+            // 将栈内数据保存在路径数组内
+            for (int i = 1; i < m - 1; i++) {
+                for (int j = 1; j < n - 1; j++) {
+                    path[i][j] = 0;
+                }
+            }
+            for (int k = 0; k <= top; k++) {
+                path[st[k].x][st[k].y] = 1;
+            }
+            // 以方阵形式输出通路
+            for (int i = 1; i < m - 1; i++) {
+                for (int j = 1; j < n - 1; j++) {
+                    printf("%d ", path[i][j]);
+                }
+                printf("\n");
+            }
         }
         int find = 0; // 用于保存是否找到
         while (d < 4 && find == 0)
@@ -138,7 +156,22 @@ int main()
             printf("(%d, %d, %c) ", min[k].x, min[k].y, sign[min[k].d]);
         }
         printf("\n");
+        // 将栈内数据保存在路径数组内
+        for (int i = 1; i < m - 1; i++) {
+            for (int j = 1; j < n - 1; j++) {
+                path[i][j] = 0;
+            }
+        }
+        for (int k = 0; k <= min_len; k++) {
+            path[min[k].x][min[k].y] = 1;
+        }
+        // 以方阵形式输出通路
+        for (int i = 1; i < m - 1; i++) {
+            for (int j = 1; j < n - 1; j++) {
+                printf("%d ", path[i][j]);
+            }
+            printf("\n");
+        }
     }
-    
     return 0;
 }
