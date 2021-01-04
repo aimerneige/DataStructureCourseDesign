@@ -13,8 +13,8 @@ struct stack {
     int d; // 下一方向的方位号 1上 2下 3左 4右 0空
 };
 
-struct stack st[1000]; // 存储节点的栈
-struct stack min[1000]; // 存储最短节点
+struct stack st[10000]; // 存储节点的栈
+struct stack min[10000]; // 存储最短节点
 int min_len = -1; // 最短路径长度
 int top = -1; // 栈指针
 
